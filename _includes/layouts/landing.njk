@@ -1,0 +1,51 @@
+---
+layout: ./base.njk
+page_css: landing.css
+---
+<div class="landing">
+  <header class="landing-header">
+    <h1>{{ header.title | safe }}</h1>
+
+    <figure class="landing-header-fire">
+      {{ comp.fire() | safe }}
+    </figure>
+
+    <div class="landing-install">
+      {{ install.title | md | safe }}
+
+      <div class="landing-install-code">
+        <pre><code>{{ install.code }}</code></pre>
+        <a class="landing-install-cta" href="{{ install.url }}">
+          <img src="/icons/arrow-right.svg" inline>
+        </a>
+      </div>
+
+      <a href="https://deno.land/x/lume"><img src="https://shield.deno.dev/x/lume" alt="deno.land/x/lume"></a>
+
+      {{ install.footer | md | safe }}
+    </div>
+  </header>
+
+
+  <section class="landing-usage">
+  {% for block in usage %}
+    <div class="landing-usage-text">
+      <h2>{{ block.title }}</h2>
+      {{ block.description | md | safe }}
+    </div>
+    <div class="landing-usage-code">
+      {{ block.code | md | safe }}
+    </div>
+  {% endfor %}
+  </section>
+
+  <ul class="landing-features">
+    {% for feature in features %}
+    <li>
+      <img src="{{ feature.img }}" inline>
+      <h3>{{ feature.title }}</h3>
+      {{ feature.description | md | safe }}
+    </li>
+    {% endfor %}
+  </ul>
+</div>
